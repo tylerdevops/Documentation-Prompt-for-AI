@@ -3,6 +3,26 @@
 Copy the prompt below into ChatGPT, Codex, Claude, Gemini, or another coding
 assistant. Replace the bracketed project details before use.
 
+## Claude Code / Cowork: use it as a skill, no copy-paste needed
+
+This repo ships the prompt as a ready-to-use Claude Code skill at
+[`.claude/skills/documentthis/SKILL.md`](.claude/skills/documentthis/SKILL.md).
+There's nothing to download or unzip — Claude Code loads project skills
+automatically from that path.
+
+1. Clone this repo (or add it as a subfolder / submodule of the project you
+   want documented, or copy just the `.claude/skills/documentthis/` folder
+   into that project's own `.claude/skills/`).
+2. Open Claude Code in that project.
+3. Run `/documentthis`. Claude will ask for any project details it can't
+   infer (name, domain, hosting target, etc.), then follow the full standard
+   below: inspect the source, show you a preview, wait for your approval,
+   then produce documented source files, an expanded `README.md`,
+   accessibility/security notes, validation, and a delivered ZIP.
+
+For any other assistant (ChatGPT, Codex, Gemini, etc.), copy the raw prompt
+below instead — those tools don't support Claude Code skills.
+
 ---
 
 ## Prompt
