@@ -198,10 +198,9 @@ no intentional runtime differences.
 
 After Tyler approves the preview, provide: documented primary source files, updated
 `README.md`, this reusable documentation standard adapted to the project if
-appropriate, an optional `CHANGELOG.md` or `LICENSE` (only after approval), one
-downloadable ZIP archive (deliver via SendUserFile), a concise summary of what was
-documented, validation results, and a recommended next step for source control or
-deployment.
+appropriate, an optional `CHANGELOG.md` or `LICENSE` (only after approval), a concise
+summary of what was documented, validation results, and a recommended next step for
+source control or deployment.
 
 If the project is already connected to Git, preserve its history and unrelated
 changes. Do not commit, push, publish, or deploy unless Tyler explicitly requests it.
