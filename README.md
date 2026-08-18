@@ -251,7 +251,6 @@ After I approve the preview, provide:
 - Updated `README.md`
 - This reusable documentation prompt, adapted to the project if appropriate
 - Optional `CHANGELOG.md` or `LICENSE` only after approval
-- One downloadable ZIP archive
 - A concise summary of what was documented
 - Validation results
 - Recommended next step for source control or deployment
