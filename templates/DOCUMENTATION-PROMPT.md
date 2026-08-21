@@ -400,13 +400,18 @@ Documentation-only changes should produce no intentional runtime differences.
 
 ### Cache-busting requirements
 
-Reference the primary stylesheet and script files with a version query
-string, e.g. `style.css?=v01` and `site.js?=v01`. Increment the version
-value whenever that file's content changes, and record the current version
-in the README's deployment section. This is the one standing exception to
-the behavior-preservation rule above — only add or bump the version query
-string; do not otherwise change the referenced path, filename, or load
-order.
+Always reference every stylesheet (`.css`) and script (`.js`) file with a
+version query string in the form `?=v01` — e.g. `style.css?=v01`,
+`site.js?=v01` — not just the primary/entry files. This is a standing,
+non-optional rule: it produces better, more predictable caching behavior
+and guarantees browsers pick up updates after deployment instead of
+serving a stale cached copy.
+
+Increment the version value whenever that specific file's content
+changes, and record the current version(s) in the README's deployment
+section. This is the one standing exception to the behavior-preservation
+rule above — only add or bump the version query string; do not otherwise
+change the referenced path, filename, or load order.
 
 ### Validation requirements
 
