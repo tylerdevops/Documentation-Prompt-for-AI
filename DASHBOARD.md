@@ -21,6 +21,7 @@ calibrated against a real example: [build.ty1er.com/dashboard](https://build.ty1
 
 ## Quick links
 
-No external tools are configured for this repo yet — there is no Git
-remote, hosting target, or analytics account set up. This section will
-list them once they exist rather than link to anything invented.
+- [GitHub repo](https://github.com/tylerdevops/Documentation-Prompt-for-AI)
+
+No hosting target or analytics account is configured for this repo — it's
+a documentation toolkit, not a deployed site.
