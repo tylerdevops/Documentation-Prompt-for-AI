@@ -15,8 +15,10 @@ standing requirement for this project. If your environment supports persistent
 memory, remember this preference for future web projects:
 
 > I prefer web projects to include clearly organized native source comments,
-> a complete README, an exact asset-directory map, customization instructions,
-> accessibility notes, testing guidance, and future theme-distribution guidance.
+> a complete README, a style guide, a changelog, a components guide, a
+> security checklist, an exact asset-directory map, customization
+> instructions, accessibility notes, testing guidance, cache-busted
+> stylesheet/script references, and future theme-distribution guidance.
 
 Do not store project secrets, credentials, private keys, personal contact data,
 or sensitive server information in memory.
@@ -124,6 +126,65 @@ Use tables where exact mappings are helpful. Use a compact Mermaid diagram when
 it materially clarifies how HTML/templates, CSS, JavaScript, assets, storage, and
 external services connect.
 
+### Companion documentation files
+
+Create each of these files if it does not already exist, alongside `README.md`:
+
+- `STYLEGUIDE.md` — the project's actual visual/design language, organized
+  as (skip any category that doesn't apply rather than inventing content
+  for it):
+  - Principles — core design tenets, only if actually stated somewhere in
+    the project.
+  - Color — every color actually used, as a table of name, hex/value, and
+    where it's used (background, text, accent, status, etc.). Extract from
+    real CSS custom properties/variables/literals; do not invent a palette.
+  - Typography — every font family, size, and weight scale actually used,
+    and what each is used for.
+  - Imagery — categories of imagery actually used (e.g. header, section,
+    footer) and any composition/tone conventions evident in the real assets.
+  - Components — example states of the project's actual UI components
+    (buttons, cards, pills/tags, navigation, status indicators), matching
+    what's in the source.
+  - Voice & tone — the actual copywriting style evident in the real
+    content.
+  - Theme switching — if the project supports more than one brand/theme,
+    document the mechanism (e.g. CSS custom properties keyed off a data
+    attribute) and where it's configured.
+  - Accessibility — contrast, keyboard, motion, and language considerations
+    actually built into the design.
+- `CHANGELOG.md` — dated entries for documentation and code changes, oldest
+  or newest first per the project's existing convention if one exists.
+- `COMPONENTS.md` — the project's actual reusable components/effects/
+  patterns, organized as (skip any category that doesn't apply rather than
+  inventing content for it):
+  - A table per component group: Component | Purpose/behavior |
+    Implementation (markup structure, required classes/data attributes,
+    and the JS file/function it depends on).
+  - For a component/pattern catalog (e.g. background patterns, icon sets),
+    list every one actually defined in the source, with its identifying
+    class or name — do not invent entries beyond what exists.
+  - Note whether a live/working example of the behavior exists in the
+    project itself or only in the documentation.
+  - A separate section for any admin/CMS-configurable settings that affect
+    components (where they're configured, what each controls), if the
+    project has a settings/admin panel.
+- `SECURITYCHECK.md` — a checklist covering the items in the Security and
+  privacy documentation requirements below, with a pass/fail or
+  needs-review status for each item as found in the actual source.
+- `DASHBOARD.md` — a documentation hub/index page for the project:
+  - Header: last-updated date and author.
+  - Navigation links to each of the project's own documentation files
+    (`README.md`, `STYLEGUIDE.md`, `CHANGELOG.md`, `COMPONENTS.md`,
+    `SECURITYCHECK.md`, and this file), each with a one-line description of
+    what it covers.
+  - Quick links to real, already-configured external tools relevant to the
+    project (e.g. its Git remote, analytics dashboard, hosting/admin
+    panel) — link only to tools that actually exist and are already in
+    use; if none are configured yet, say so rather than inventing a URL.
+
+Do not duplicate content wholesale across files — cross-reference between
+`README.md` and these companion files instead of repeating full sections.
+
 ### Asset documentation requirements
 
 Inspect the real asset folders and references in source files. Document the exact
@@ -207,6 +268,16 @@ Unless I explicitly authorize functional changes:
 
 Documentation-only changes should produce no intentional runtime differences.
 
+### Cache-busting requirements
+
+Reference the primary stylesheet and script files with a version query
+string, e.g. `style.css?=v01` and `site.js?=v01`. Increment the version
+value whenever that file's content changes, and record the current version
+in the README's deployment section. This is the one standing exception to
+the behavior-preservation rule above — only add or bump the version query
+string; do not otherwise change the referenced path, filename, or load
+order.
+
 ### Validation requirements
 
 After approval and implementation:
@@ -227,10 +298,13 @@ After approval and implementation:
 
 After I approve the preview, provide:
 
-- Documented primary source files
+- Documented primary source files, with cache-busted stylesheet/script
+  references
 - Updated `README.md`
+- `STYLEGUIDE.md`, `CHANGELOG.md`, `COMPONENTS.md`, `SECURITYCHECK.md`, and
+  `DASHBOARD.md` (created if missing, updated if present)
 - This reusable documentation prompt, adapted to the project if appropriate
-- Optional `CHANGELOG.md` or `LICENSE` only after approval
+- Optional `LICENSE` only after approval
 - One downloadable ZIP archive
 - A concise summary of what was documented
 - Validation results
@@ -248,7 +322,10 @@ Use this when the full standard is already known in the conversation:
 > Document this web project using our documentation-first standard. Inspect the
 > real source and assets, preview the documentation plan, and wait for approval.
 > Then add native comments to every primary source file, expand README.md into a
-> complete architecture/customization/deployment guide, include the exact asset
-> tree, accessibility and privacy behavior, testing and troubleshooting, and
-> future free/paid-theme guidance. Preserve functionality and validate everything
-> before delivering a ZIP. Never expose or remember secrets.
+> complete architecture/customization/deployment guide, create/update
+> STYLEGUIDE.md, CHANGELOG.md, COMPONENTS.md, SECURITYCHECK.md, and
+> DASHBOARD.md, include the exact asset tree, accessibility and privacy
+> behavior, testing and troubleshooting, cache-busted CSS/JS references
+> (e.g. style.css?=v01), and future free/paid-theme guidance. Preserve
+> functionality and validate everything before delivering a ZIP. Never
+> expose or remember secrets.
