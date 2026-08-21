@@ -1,4 +1,4 @@
-# Documentation Prompt for AI
+# Documentation Prompt for Web Projects with AI
 
 A reusable toolkit for applying a documentation-first standard to web
 projects (HTML/CSS/JS, frameworks, or CMS sites) with any AI coding
