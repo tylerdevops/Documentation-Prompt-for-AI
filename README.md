@@ -26,22 +26,41 @@ This project is not a web project itself — it's a template you reuse
 ├── CHANGELOG.md                       # dated history of this repo
 ├── COMPONENTS.md                      # the toolkit's reusable pieces
 ├── SECURITYCHECK.md                   # security/privacy checklist for this repo
+├── LICENSE
+├── .claude/
+│   └── skills/
+│       └── documentthis/
+│           └── SKILL.md                # this standard, packaged as a Claude Code skill
 └── templates/
     └── DOCUMENTATION-PROMPT.md         # the reusable prompt (full + short versions)
 ```
 
 ## How to use it
 
+### Claude Code / Cowork: use it as a skill, no copy-paste needed
+
+This repo ships the prompt as a ready-to-use Claude Code skill at
+[`.claude/skills/documentthis/SKILL.md`](.claude/skills/documentthis/SKILL.md).
+There's nothing to download or unzip — Claude Code loads project skills
+automatically from that path.
+
+1. Clone this repo (or add it as a subfolder/submodule of the project you
+   want documented, or copy just the `.claude/skills/documentthis/` folder
+   into that project's own `.claude/skills/`).
+2. Open Claude Code in that project.
+3. Run `/documentthis`. Claude will ask for any project details it can't
+   infer (name, domain, hosting target, etc.), then follow the full
+   standard: inspect the source, show you a preview, wait for your
+   approval, then produce documented source files, an expanded
+   `README.md`, companion docs (style guide, changelog, components,
+   security checklist, dashboard), and validation results.
+
+### Any other assistant (ChatGPT, Codex, Gemini, etc.)
+
 1. Open [`templates/DOCUMENTATION-PROMPT.md`](templates/DOCUMENTATION-PROMPT.md).
-2. Copy the **Prompt** section into ChatGPT, Codex, Claude, Gemini, or
-   another coding assistant.
+2. Copy the **Prompt** section into the assistant.
 3. Replace the bracketed project details (name, domain, purpose,
    technology, hosting target, audience, distribution plans).
-4. The assistant will inspect the target project, show a documentation
-   preview, wait for your approval, then produce documented source files,
-   an expanded README, companion docs (style guide, changelog, components,
-   security checklist, dashboard), and a validation pass — packaged as a
-   ZIP.
 
 Once an assistant already has the full standard in context (e.g. later in
 the same conversation), use the **Short version** at the bottom of the
@@ -59,13 +78,6 @@ same file instead of re-pasting the whole prompt.
 
 Every web project documented with this standard gets its own copies of
 these five files, scoped to that project's real source.
-
-## Claude Code shortcut
-
-If you're using Claude Code, the same standard is also available as the
-`documentthis` skill — invoke `/documentthis` (or ask to "document this
-project") inside any web project's directory instead of copy-pasting the
-prompt.
 
 ## Notes
 
