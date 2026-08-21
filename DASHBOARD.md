@@ -2,8 +2,7 @@
 
 Documentation hub for this repo. Structure follows the `DASHBOARD.md`
 template (see
-[`templates/DOCUMENTATION-PROMPT.md`](templates/DOCUMENTATION-PROMPT.md)),
-calibrated against a real example: [build.ty1er.com/dashboard](https://build.ty1er.com/dashboard/).
+[`templates/DOCUMENTATION-PROMPT.md`](templates/DOCUMENTATION-PROMPT.md)).
 
 - **Last updated:** 2026-08-21
 - **Author:** tylerdevops
