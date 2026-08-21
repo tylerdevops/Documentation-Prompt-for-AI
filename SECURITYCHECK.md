@@ -19,8 +19,9 @@ claim without a real audit behind it.
 | 4 | Secrets & credential management | Browser storage | N/A | No client-side code. |
 | 4 | Secrets & credential management | Geolocation | N/A | Not used. |
 | 4 | Secrets & credential management | Analytics and third-party requests | N/A | None. |
-| 4 | Secrets & credential management | External links | Pass | README references third-party assistants (ChatGPT, Codex, Claude, Gemini) and example sites by name/URL only; no forms or embeds. |
+| 4 | Secrets & credential management | External links | Pass | README references third-party assistants (ChatGPT, Codex, Claude, Gemini) by name only, and the repo's own GitHub URL; no forms or embeds. |
 | 4 | Secrets & credential management | Secrets and environment variables | Pass | `README.md`'s Notes section previously ended in a truncated "...IP Address, root@" fragment; removed 2026-08-21 on request. No real secret values found anywhere in tracked files. |
+| 4 | Secrets & credential management | Public-repo personal-resource exposure | Pass | This repo is public. Removed all mentions of real personal websites (build.ty1er.com, portfolio.ty1er.com, 360dna.com, ecards.magnolia365.com) that had been used as calibration examples, including from `CHANGELOG.md`'s historical entries — not just current-state docs. The one remaining self-reference is the repo's own GitHub URL, kept per explicit confirmation, along with `LICENSE`'s copyright holder and the `tylerdevops` git author identity. |
 | 5 | Supply chain & build integrity | SBOM, pinned dependencies, signed releases | N/A | No package manifest or build/release process exists for this repo (cross-reference `Repo-Hygiene-Check.md` #11–12). |
 | 6 | Secure development lifecycle | SAST/DAST, pre-commit secrets scanning | N/A | No code to statically analyze; no CI pipeline configured. |
 | 7 | Logging, monitoring & incident response | Audit logging, IR plan, breach notification | N/A | No running system to log, monitor, or have an incident on. |

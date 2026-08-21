@@ -172,7 +172,12 @@ category within a file that doesn't apply rather than inventing content for it):
     network calls; a data-retention and deletion policy for local user data.
   - **Secrets & credential management** — the items in the Security and privacy
     documentation requirements below (registry, isolated storage, manifest), plus:
-    no API keys or signing-certificate material committed to source.
+    no API keys or signing-certificate material committed to source. **If the repo is
+    public**, also confirm no real personal websites, personal domains, internal tool
+    URLs, or other non-essential personal resources appear anywhere in the
+    documentation — only the project's own repo self-references are acceptable
+    exceptions. Scan `CHANGELOG.md` and any other historical/audit files too, not
+    just current-state docs.
   - **Supply chain & build integrity** — the dependency license audit (section 8a)
     plus: NuGet dependencies pinned to exact versions with a lockfile, code-signing/
     Authenticode identity actually verified before distribution.
