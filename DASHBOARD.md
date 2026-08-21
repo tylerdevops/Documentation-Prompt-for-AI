@@ -17,7 +17,12 @@ calibrated against a real example: [build.ty1er.com/dashboard](https://build.ty1
 | [`CHANGELOG.md`](CHANGELOG.md) | Dated history of this repo |
 | [`COMPONENTS.md`](COMPONENTS.md) | The toolkit's reusable pieces |
 | [`SECURITYCHECK.md`](SECURITYCHECK.md) | Security/privacy checklist for this repo |
+| [`Repo-Hygiene-Check.md`](Repo-Hygiene-Check.md) | Point-in-time repo hygiene audit |
+| [`Ask-Other-Agent-to-Review.md`](Ask-Other-Agent-to-Review.md) | Prompt for an independent second-opinion review from a different AI agent |
 | [`templates/DOCUMENTATION-PROMPT.md`](templates/DOCUMENTATION-PROMPT.md) | The reusable prompt itself (full + short versions) |
+| [`.claude/skills/documentthisweb/SKILL.md`](.claude/skills/documentthisweb/SKILL.md) | `/documentthisweb` — the standard packaged for web projects |
+| [`.claude/skills/documentthisMacOS/SKILL.md`](.claude/skills/documentthisMacOS/SKILL.md) | `/documentthisMacOS` — the standard adapted for native macOS projects |
+| [`.claude/skills/documentthisWindows/SKILL.md`](.claude/skills/documentthisWindows/SKILL.md) | `/documentthisWindows` — the standard adapted for native Windows projects |
 
 ## Quick links
 

@@ -26,11 +26,15 @@ This project is not a web project itself — it's a template you reuse
 ├── CHANGELOG.md                       # dated history of this repo
 ├── COMPONENTS.md                      # the toolkit's reusable pieces
 ├── SECURITYCHECK.md                   # security/privacy checklist for this repo
+├── Repo-Hygiene-Check.md              # point-in-time repo hygiene audit
+├── Ask-Other-Agent-to-Review.md       # prompt for an independent second-opinion review
 ├── LICENSE
 ├── .claude/
 │   └── skills/
-│       └── documentthis/
-│           └── SKILL.md                # this standard, packaged as a Claude Code skill
+│       ├── documentthisweb/SKILL.md    # web/web app/website standard
+│       ├── documentthisMacOS/SKILL.md  # native macOS standard
+│       ├── documentthisWindows/SKILL.md # native Windows standard
+│       └── documentthis/SKILL.md       # deprecated — redirects to documentthisweb
 └── templates/
     └── DOCUMENTATION-PROMPT.md         # the reusable prompt (full + short versions)
 ```
@@ -39,21 +43,29 @@ This project is not a web project itself — it's a template you reuse
 
 ### Claude Code / Cowork: use it as a skill, no copy-paste needed
 
-This repo ships the prompt as a ready-to-use Claude Code skill at
-[`.claude/skills/documentthis/SKILL.md`](.claude/skills/documentthis/SKILL.md).
+This repo ships the standard as three ready-to-use Claude Code skills, one
+per platform:
+
+- [`.claude/skills/documentthisweb/SKILL.md`](.claude/skills/documentthisweb/SKILL.md) → `/documentthisweb`
+- [`.claude/skills/documentthisMacOS/SKILL.md`](.claude/skills/documentthisMacOS/SKILL.md) → `/documentthisMacOS`
+- [`.claude/skills/documentthisWindows/SKILL.md`](.claude/skills/documentthisWindows/SKILL.md) → `/documentthisWindows`
+
 There's nothing to download or unzip — Claude Code loads project skills
-automatically from that path.
+automatically from those paths. (`.claude/skills/documentthis/` still
+exists but only as a deprecated stub pointing to `/documentthisweb`.)
 
 1. Clone this repo (or add it as a subfolder/submodule of the project you
-   want documented, or copy just the `.claude/skills/documentthis/` folder
-   into that project's own `.claude/skills/`).
+   want documented, or copy just the relevant skill folder(s) into that
+   project's own `.claude/skills/`).
 2. Open Claude Code in that project.
-3. Run `/documentthis`. Claude will ask for any project details it can't
-   infer (name, domain, hosting target, etc.), then follow the full
-   standard: inspect the source, show you a preview, wait for your
+3. Run the matching command for the project's platform —
+   `/documentthisweb`, `/documentthisMacOS`, or `/documentthisWindows`.
+   Claude will ask for any project details it can't infer, then follow the
+   full standard: inspect the source, show you a preview, wait for your
    approval, then produce documented source files, an expanded
    `README.md`, companion docs (style guide, changelog, components,
-   security checklist, dashboard), and validation results.
+   security checklist, dashboard, repo hygiene check, second-opinion
+   review prompt), and validation results.
 
 ### Any other assistant (ChatGPT, Codex, Gemini, etc.)
 
@@ -75,13 +87,18 @@ same file instead of re-pasting the whole prompt.
 - [`COMPONENTS.md`](COMPONENTS.md) — the toolkit's reusable pieces.
 - [`SECURITYCHECK.md`](SECURITYCHECK.md) — security/privacy checklist for
   this repo.
+- [`Repo-Hygiene-Check.md`](Repo-Hygiene-Check.md) — point-in-time repo
+  hygiene audit.
+- [`Ask-Other-Agent-to-Review.md`](Ask-Other-Agent-to-Review.md) — prompt
+  for an independent second-opinion review from a different AI agent.
 
 Every web project documented with this standard gets its own copies of
-these five files, scoped to that project's real source.
+these seven files, scoped to that project's real source.
 
 ## Notes
 
 - Never let the prompt or its output store secrets, credentials, private
-  keys, personal contact data, or sensitive server information, IP Address, root@
+  keys, personal contact data, sensitive server information, or IP
+  addresses.
 - Adapt the bracketed fields per project; the rest of the prompt is meant
   to stay stable across projects.

@@ -26,8 +26,11 @@ and [ecards.magnolia365.com](https://ecards.magnolia365.com/?pg=3).
 
 ## Structure conventions
 
-- ALL-CAPS filenames for standing deliverable docs: `README.md`,
-  `STYLEGUIDE.md`, `CHANGELOG.md`, `COMPONENTS.md`, `SECURITYCHECK.md`.
+- ALL-CAPS, single/compound-word filenames for standing deliverable docs
+  whose name is one word: `README.md`, `STYLEGUIDE.md`, `CHANGELOG.md`,
+  `COMPONENTS.md`, `SECURITYCHECK.md`, `DASHBOARD.md`.
+- Title-Case with hyphens for deliverables whose name is genuinely
+  multi-word: `Repo-Hygiene-Check.md`, `Ask-Other-Agent-to-Review.md`.
 - `###`-level headings mark one discrete requirement category; `##` marks a
   major phase (`Prompt`, `Short version`).
 - Blockquote (`>`) is reserved for the persistent-memory preference
@@ -42,8 +45,9 @@ Not applicable — no rendered UI or visual assets exist in this repo.
 ## Components
 
 See [`COMPONENTS.md`](COMPONENTS.md) for the toolkit's reusable pieces (the
-full prompt, the short-form re-prompt, and the `documentthis` skill
-wrapper) and how they relate.
+full prompt, the short-form re-prompt, and the `documentthisweb` /
+`documentthisMacOS` / `documentthisWindows` skill wrappers) and how they
+relate.
 
 ## Theme switching
 
