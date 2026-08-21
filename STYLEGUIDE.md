@@ -5,8 +5,7 @@ CSS, or visual assets of its own. So unlike a real web project's style
 guide, most visual categories below are marked not applicable. The section
 shape follows the standard's `STYLEGUIDE.md` template (see
 [`templates/DOCUMENTATION-PROMPT.md`](templates/DOCUMENTATION-PROMPT.md)),
-calibrated against two real examples: [360dna.com/style-guide](https://360dna.com/style-guide/)
-and [ecards.magnolia365.com](https://ecards.magnolia365.com/?pg=3).
+calibrated against a real example: [ecards.magnolia365.com](https://ecards.magnolia365.com/?pg=3).
 
 ## Principles
 

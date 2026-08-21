@@ -2,8 +2,7 @@
 
 This toolkit has six reusable pieces. Table format follows the
 `COMPONENTS.md` template (see
-[`templates/DOCUMENTATION-PROMPT.md`](templates/DOCUMENTATION-PROMPT.md)),
-calibrated against a real example: [build.ty1er.com/components](https://build.ty1er.com/components/).
+[`templates/DOCUMENTATION-PROMPT.md`](templates/DOCUMENTATION-PROMPT.md)).
 There is no component/pattern catalog or admin-configurable settings panel
 in this repo, so those sections are omitted.
 

@@ -2,6 +2,16 @@
 
 All notable changes to this repo are documented here, newest first.
 
+## 2026-08-22
+
+- Removed all mentions of build.ty1er.com, portfolio.ty1er.com, and
+  360dna.com from documentation, on request. `DASHBOARD.md` and
+  `COMPONENTS.md` dropped their "calibrated against" attribution
+  entirely; `STYLEGUIDE.md` keeps its remaining ecards.magnolia365.com
+  reference (not requested for removal); `CHANGELOG.md`'s historical
+  entries were reworded to describe the calibration generically instead
+  of naming the sites.
+
 ## 2026-08-21
 
 - Added `STYLEGUIDE.md`, `CHANGELOG.md`, `COMPONENTS.md`, `SECURITYCHECK.md`,
@@ -12,12 +22,12 @@ All notable changes to this repo are documented here, newest first.
   one standing exception to the behavior-preservation rule.
 - Expanded the `STYLEGUIDE.md` template section into a full Principles /
   Color / Typography / Imagery / Components / Voice / Theme-switching /
-  Accessibility structure, calibrated against 360dna.com and
-  ecards.magnolia365.com.
+  Accessibility structure, calibrated against real-world style guide
+  examples.
 - Converted `COMPONENTS.md` to a Component/Purpose/Location/Depends-on
-  table format, calibrated against build.ty1er.com/components.
+  table format, calibrated against a real-world example.
 - Added the `DASHBOARD.md` template section (header, doc navigation, quick
-  links), calibrated against build.ty1er.com/dashboard.
+  links), calibrated against a real-world example.
 - Added `.gitignore` for macOS `.DS_Store` files.
 - Merged this session's local restructuring with the pre-existing GitHub
   history for this repo (LICENSE, `.claude/skills/documentthis/SKILL.md`,
