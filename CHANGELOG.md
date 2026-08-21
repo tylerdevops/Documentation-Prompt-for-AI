@@ -4,11 +4,10 @@ All notable changes to this repo are documented here, newest first.
 
 ## 2026-08-22
 
-- Removed all mentions of build.ty1er.com, portfolio.ty1er.com, and
-  360dna.com from documentation, on request. `DASHBOARD.md` and
-  `COMPONENTS.md` dropped their "calibrated against" attribution
-  entirely; `STYLEGUIDE.md` keeps its remaining ecards.magnolia365.com
-  reference (not requested for removal); `CHANGELOG.md`'s historical
+- Removed all mentions of build.ty1er.com, portfolio.ty1er.com,
+  360dna.com, and ecards.magnolia365.com from documentation, on request.
+  `DASHBOARD.md`, `COMPONENTS.md`, and `STYLEGUIDE.md` all dropped their
+  "calibrated against" attribution entirely; `CHANGELOG.md`'s historical
   entries were reworded to describe the calibration generically instead
   of naming the sites.
 

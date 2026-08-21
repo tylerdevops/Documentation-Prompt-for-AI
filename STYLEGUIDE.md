@@ -4,8 +4,7 @@ This repo is a markdown prompt/template toolkit — it has no rendered UI,
 CSS, or visual assets of its own. So unlike a real web project's style
 guide, most visual categories below are marked not applicable. The section
 shape follows the standard's `STYLEGUIDE.md` template (see
-[`templates/DOCUMENTATION-PROMPT.md`](templates/DOCUMENTATION-PROMPT.md)),
-calibrated against a real example: [ecards.magnolia365.com](https://ecards.magnolia365.com/?pg=3).
+[`templates/DOCUMENTATION-PROMPT.md`](templates/DOCUMENTATION-PROMPT.md)).
 
 ## Principles
 
