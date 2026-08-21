@@ -194,7 +194,13 @@ Create each of these files if it does not already exist, alongside `README.md`:
     privacy documentation requirements below (forms, storage, secrets,
     etc.), plus: secrets managed via a vault/secret manager rather than
     env-var defaults or plaintext config, and a rotation policy for any
-    long-lived credential.
+    long-lived credential. **If the repo is public**, also confirm no
+    real personal websites, personal domains, internal tool URLs, or
+    other non-essential personal resources appear anywhere in the
+    documentation — only the project's own repo self-references (its own
+    URL, its own author/license attribution) are acceptable exceptions.
+    Scan `CHANGELOG.md` and any other historical/audit files too, not
+    just current-state docs.
   - **Supply chain & build integrity** — an SBOM exists (cross-reference
     `Repo-Hygiene-Check.md`); dependencies are pinned with integrity
     verification (lockfile hashes); commits/releases are signed where the

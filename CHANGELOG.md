@@ -9,6 +9,14 @@ All notable changes to this repo are documented here, newest first.
   "calibrated against" attribution entirely; `CHANGELOG.md`'s historical
   entries were reworded to describe the calibration generically instead
   of naming the sites.
+- Added a standing "public-repo personal-resource exposure" check to
+  `SECURITYCHECK.md`'s Secrets & credential management category, in the
+  template and all three platform skills: for any public repo, confirm no
+  real personal websites/domains/resources appear anywhere in the
+  documentation — including historical `CHANGELOG.md` entries, not just
+  current-state docs — with the project's own repo self-reference as the
+  only acceptable exception. Mirrored to `~/.claude/skills/`. Updated this
+  repo's own `SECURITYCHECK.md` to record the pass under the new item.
 
 ## 2026-08-21
 

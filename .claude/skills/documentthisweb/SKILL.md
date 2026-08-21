@@ -161,7 +161,11 @@ category within a file that doesn't apply rather than inventing content for it):
   - **Secrets & credential management** — the items in the Security and privacy
     documentation requirements below (forms, storage, secrets, CSP, etc.), plus:
     secrets managed via environment variables or a secret manager, never committed
-    plaintext.
+    plaintext. **If the repo is public**, also confirm no real personal websites,
+    personal domains, internal tool URLs, or other non-essential personal resources
+    appear anywhere in the documentation — only the project's own repo
+    self-references are acceptable exceptions. Scan `CHANGELOG.md` and any other
+    historical/audit files too, not just current-state docs.
   - **Supply chain & build integrity** — the dependency license audit (section 8a)
     plus: dependencies pinned via lockfile with integrity hashes, CI/build pipeline
     doesn't pull unpinned "latest" versions.
