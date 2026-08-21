@@ -168,9 +168,62 @@ Create each of these files if it does not already exist, alongside `README.md`:
   - A separate section for any admin/CMS-configurable settings that affect
     components (where they're configured, what each controls), if the
     project has a settings/admin panel.
-- `SECURITYCHECK.md` — a checklist covering the items in the Security and
-  privacy documentation requirements below, with a pass/fail or
-  needs-review status for each item as found in the actual source.
+- `SECURITYCHECK.md` — a checklist scoped the way a top-level security
+  lead running a serious engineering team would scope it, not just the
+  app's own forms-and-cookies concerns. Organize it into these categories,
+  and mark every item Pass, Needs review, or N/A with a one-line reason
+  for N/A — never Pass without actually checking, never claim a
+  compliance framework is satisfied without a real audit behind it, and
+  never invent a control that isn't actually implemented.
+
+  - **Threat modeling & data classification** — a threat model (STRIDE or
+    equivalent) exists and is current; every type of data the project
+    handles is classified by sensitivity; every entry point/attack surface
+    is enumerated; the adversary model is stated (opportunistic vs.
+    targeted/advanced) rather than left implicit.
+  - **Authentication & access control** — MFA where applicable;
+    least-privilege/role-based access control; session hardening (secure/
+    HttpOnly/SameSite cookies, timeout, re-authentication on privilege
+    change); a zero-trust posture — no implicit trust granted purely by
+    network location.
+  - **Data protection (at rest & in transit)** — encryption at rest with
+    the actual algorithm and key-management approach documented; TLS
+    version and cipher suite enforced in transit; a key-rotation policy; a
+    data-retention and secure-deletion policy.
+  - **Secrets & credential management** — the items in the Security and
+    privacy documentation requirements below (forms, storage, secrets,
+    etc.), plus: secrets managed via a vault/secret manager rather than
+    env-var defaults or plaintext config, and a rotation policy for any
+    long-lived credential.
+  - **Supply chain & build integrity** — an SBOM exists (cross-reference
+    `Repo-Hygiene-Check.md`); dependencies are pinned with integrity
+    verification (lockfile hashes); commits/releases are signed where the
+    platform supports it; builds are reproducible.
+  - **Secure development lifecycle** — SAST/DAST/dependency-vulnerability
+    scanning integrated into CI, not run ad hoc; secrets scanning at
+    pre-commit, not only in CI; a code-review requirement for
+    security-sensitive changes.
+  - **Logging, monitoring & incident response** — audit logging for
+    security-relevant actions, tamper-evident where feasible; centralized
+    log aggregation; a written incident-response plan with named roles and
+    an escalation path; a breach-notification procedure with a stated
+    timeline wherever a real regulation (GDPR, CCPA, etc.) applies.
+  - **Compliance & standards alignment** — name only the frameworks that
+    actually apply to this specific project (e.g. NIST 800-53, CMMC,
+    FedRAMP, SOC 2, ISO 27001, STIG, GDPR/CCPA) and state the project's
+    real posture against each. Write "not assessed" rather than assuming
+    compliance no one has actually audited.
+  - **Network & infrastructure hardening** — least-privilege firewall/
+    ingress rules; network segmentation; the OS/runtime hardened against a
+    recognized baseline (e.g. CIS benchmarks), wherever the project
+    controls the runtime it deploys to.
+  - **Adversarial testing** — a penetration-testing cadence; a
+    responsible-disclosure or bug-bounty channel; red-team/pen-test
+    findings tracked to actual remediation, not just filed and forgotten.
+
+  Mark a whole category N/A only when the project genuinely has none of
+  it (e.g. a static site with no auth, no backend, and no deployed
+  infrastructure) — say so explicitly rather than omitting the category.
 - `DASHBOARD.md` — a documentation hub/index page for the project:
   - Header: last-updated date and author.
   - Navigation links to each of the project's own documentation files
@@ -181,6 +234,83 @@ Create each of these files if it does not already exist, alongside `README.md`:
     project (e.g. its Git remote, analytics dashboard, hosting/admin
     panel) — link only to tools that actually exist and are already in
     use; if none are configured yet, say so rather than inventing a URL.
+- `Repo-Hygiene-Check.md` — a point-in-time audit table (Check | Status |
+  Notes), scoped the way a senior/staff-level system design engineer would
+  scope it: not just doc hygiene, but whether the repo is actually healthy
+  as an engineered system. Organize it into these categories, and mark
+  every item Pass, Needs review, or N/A with a one-line reason for N/A —
+  never Pass without actually checking, and never silently drop a category
+  because it's inconvenient. Re-run and update the table in place rather
+  than appending a new one each time.
+
+  - **Version control & workflow hygiene** — working-tree cleanliness;
+    branch hygiene (stale branches, merged-but-undeleted branches, branch
+    protection); `.gitignore` coverage (build output, dependency caches,
+    editor/OS cruft, secrets-shaped files); commit message quality; tag/
+    release hygiene (semantic versioning, release notes); git history size
+    (no accidentally committed binaries, datasets, or credentials).
+  - **Documentation & architecture currency** — README/architecture docs
+    vs. actual code structure (cross-file drift); Architecture Decision
+    Records present for major decisions and not stale; diagrams match the
+    current system, not an earlier version; filename/naming convention
+    consistency; internal link integrity.
+  - **Dependency & supply-chain health** — lockfile in sync with its
+    manifest; how far outdated dependencies are, especially
+    security-patched versions; known-vulnerability scan against current
+    dependency versions; license compliance (see the dependency license
+    audit elsewhere in this standard); an SBOM present or generatable.
+  - **Build, CI/CD & release pipeline** — CI pipeline exists and its last
+    run is green; build reproducibility (pinned toolchain/runtime
+    versions); test-suite coverage trend and flaky-test detection;
+    release/versioning process documented and automated where possible; a
+    rollback procedure that has actually been exercised, not just written.
+  - **Infrastructure & deployment** — infrastructure-as-code matches
+    actual deployed infrastructure, no undocumented manual drift;
+    environment parity (dev/staging/prod differences are documented and
+    intentional); secrets management via a vault/secret manager, not
+    committed plaintext or env-var defaults; feature flags and config
+    documented and not orphaned.
+  - **API & interface contracts** — schema/contract (OpenAPI, GraphQL SDL,
+    protobuf) matches actual implemented endpoints; versioning and
+    backward-compatibility policy documented; a deprecation policy and
+    timeline for old contract versions.
+  - **Observability & operations** — logging, metrics, and tracing
+    instrumentation present and documented; alerting rules exist, are
+    current, and map to real failure modes; runbooks exist for known
+    operational scenarios and aren't stale; on-call/ownership documented
+    (who owns what, escalation path).
+  - **Security posture** — secrets/credentials scan extended to CI logs
+    and build artifacts, not just source; static analysis (SAST) and
+    dependency vulnerability scanning integrated into CI; least-privilege
+    check on IAM roles/service accounts actually used vs. granted; a
+    threat model that reflects the current system, not an earlier one.
+  - **Reliability & scalability** — documented load/capacity assumptions
+    (expected traffic, scaling triggers); known single points of failure
+    documented with a mitigation plan or explicit acceptance; backup/
+    restore and disaster-recovery procedures documented *and tested*, not
+    just written; SLOs/SLAs defined and monitored against actual
+    performance.
+  - **Repo structure & ownership** — module/service boundaries respected
+    (no circular dependencies, no leaky abstractions); `CODEOWNERS` (or
+    equivalent) present and accurate; monorepo/multi-repo consistency
+    (shared tooling, consistent versioning strategy across packages); repo
+    size/bloat (no unnecessary binaries, vendored dependencies, or
+    generated artifacts committed).
+
+  Mark a whole category N/A only when the project genuinely has none of
+  it (e.g. a static site with no CI/CD, no APIs, and no deployed
+  infrastructure) — say so explicitly rather than omitting the category
+  from the table.
+- `Ask-Other-Agent-to-Review.md` — a copy-paste prompt for having a
+  different AI agent (not the one that wrote the documentation)
+  independently verify it, covering invented content, cross-file drift,
+  missed secrets, naming/convention violations, and checklist items marked
+  Pass that aren't actually true. Name a specific alternate agent (e.g.
+  OpenAI Codex, a separate Claude Code session, Google Antigravity with
+  Gemini or Grok) each time it's used — the point is a genuinely different
+  model, not the same one re-checking its own work. If the session writing
+  this file has no connector to the alternate agent, say so explicitly
+  rather than simulating the review itself.
 
 Do not duplicate content wholesale across files — cross-reference between
 `README.md` and these companion files instead of repeating full sections.
@@ -292,7 +422,6 @@ After approval and implementation:
 7. Confirm ARIA ID relationships remain valid.
 8. Confirm no secret or personal data was newly exposed.
 9. Check README links, headings, tables, code fences, and Mermaid syntax.
-10. List the final archive contents and verify the ZIP.
 
 ### Deliverables
 
@@ -301,11 +430,11 @@ After I approve the preview, provide:
 - Documented primary source files, with cache-busted stylesheet/script
   references
 - Updated `README.md`
-- `STYLEGUIDE.md`, `CHANGELOG.md`, `COMPONENTS.md`, `SECURITYCHECK.md`, and
-  `DASHBOARD.md` (created if missing, updated if present)
+- `STYLEGUIDE.md`, `CHANGELOG.md`, `COMPONENTS.md`, `SECURITYCHECK.md`,
+  `DASHBOARD.md`, `Repo-Hygiene-Check.md`, and
+  `Ask-Other-Agent-to-Review.md` (created if missing, updated if present)
 - This reusable documentation prompt, adapted to the project if appropriate
 - Optional `LICENSE` only after approval
-- One downloadable ZIP archive
 - A concise summary of what was documented
 - Validation results
 - Recommended next step for source control or deployment
@@ -323,9 +452,10 @@ Use this when the full standard is already known in the conversation:
 > real source and assets, preview the documentation plan, and wait for approval.
 > Then add native comments to every primary source file, expand README.md into a
 > complete architecture/customization/deployment guide, create/update
-> STYLEGUIDE.md, CHANGELOG.md, COMPONENTS.md, SECURITYCHECK.md, and
-> DASHBOARD.md, include the exact asset tree, accessibility and privacy
-> behavior, testing and troubleshooting, cache-busted CSS/JS references
-> (e.g. style.css?=v01), and future free/paid-theme guidance. Preserve
-> functionality and validate everything before delivering a ZIP. Never
-> expose or remember secrets.
+> STYLEGUIDE.md, CHANGELOG.md, COMPONENTS.md, SECURITYCHECK.md,
+> DASHBOARD.md, Repo-Hygiene-Check.md, and Ask-Other-Agent-to-Review.md,
+> include the exact asset tree, accessibility and privacy behavior,
+> testing and troubleshooting, cache-busted CSS/JS references (e.g.
+> style.css?=v01), and future free/paid-theme guidance. Preserve
+> functionality and validate everything before delivering. Never expose or
+> remember secrets.
